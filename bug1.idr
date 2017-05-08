@@ -7,9 +7,6 @@ import Effect.File
 partial shred_config : IO (List (String, String))
 shred_config = pure []
 
-partial fromJust : Maybe a -> a
-fromJust (Just v) = v
-
 partial main : IO ()
 main = do
   putStrLn "idris ffi test start"
@@ -21,11 +18,11 @@ main = do
   putStrLn "config shredded to map:"
   printLn config_map
 
-  let username = fromJust $ lookup "username" config_map
+  let username = lookup "username" config_map
 
-  let password = fromJust $ lookup "password" config_map
-  let app_id = fromJust $ lookup "appid" config_map
-  let app_token = fromJust $ lookup "appsecret" config_map
+  let password = lookup "password" config_map
+  let app_id = lookup "appid" config_map
+  let app_token = lookup "appsecret" config_map
 
   putStrLn "looked up username:"
   printLn username
